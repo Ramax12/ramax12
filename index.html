@@ -4,6 +4,10 @@
 	<meta charset="UTF-8">
 	<title>Portfolio</title>
 	<style>
+		body {
+			background: linear-gradient(135deg, #e8f5fe, #b5e2ff);
+			min-height: 100vh;
+		}
 		img {
 			width: 100%;
 			height: auto;
@@ -39,7 +43,7 @@
 		.sites__img-wrapper:focus {
 			width: 156px;
 			height: 206px;
-			margin: 5px 17px;
+			margin: 5px 7px;
 			opacity: .8;
 		}
 		.sites__img-wrapper:active {
@@ -62,6 +66,13 @@
 		}
 		.sites__img-wrapper-mishka:hover {
 			border: 3px solid #57c3b3;
+		}
+		.sites__item h3 {
+			font-size: 20px;
+			line-height: 24px;
+			color: #111;
+			text-align: center;
+			margin-bottom: 0;
 		}
 		.sites__github {
 			font-size: 20px;
@@ -104,6 +115,7 @@
 		<h1 class="sites__title">Мои проэкты</h1>
 		<ul class="sites__list">
 			<li class="sites__item">
+				<h3>Cat-energy</h3>
 				<a class="sites__link" href="cat-energy/index.html">
 					<div class="sites__img-wrapper sites__img-wrapper-cat-energy">
 						<img src="img/cat-energy.jpg" alt="cat-energy" class="sites__img">
@@ -111,6 +123,7 @@
 				</a>
 			</li>
 			<li class="sites__item">
+				<h3>Gllacy</h3>
 				<a class="sites__link" href="gllacy/index.html">
 					<div class="sites__img-wrapper sites__img-wrapper-gllacy">
 						<img src="img/gllacy.jpg" alt="gllacy" class="sites__img">
@@ -118,6 +131,7 @@
 				</a>
 			</li>
 			<li class="sites__item">
+				<h3>Mishka</h3>
 				<a class="sites__link" href="mishka/index.html">
 					<div class="sites__img-wrapper sites__img-wrapper-mishka">
 						<img src="img/mishka.jpg" alt="mishka" class="sites__img">
