@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Portfolio</title>
+	<style>
+		img {
+			width: 100%;
+			height: auto;
+		}
+		.sites {
+			padding: 0 10px;
+			margin-bottom: 50px;
+		}
+		.sites__title {
+			font-size: 30px;
+			line-height: 60px;
+			color: #111;
+		}
+		.sites__list {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: center;
+			padding: 0;
+			margin: 0;
+			margin-bottom: 20px;
+		}
+		.sites__item {
+			list-style: none;
+		}
+		.sites__img-wrapper {
+			width: 150px;
+			height: 200px;
+			overflow: hidden;
+			margin: 8px 10px;
+		}
+		.sites__img-wrapper:hover,
+		.sites__img-wrapper:focus {
+			width: 156px;
+			height: 206px;
+			margin: 5px 17px;
+			opacity: .8;
+		}
+		.sites__img-wrapper:active {
+			opacity: .6;
+		}
+		.sites__img-wrapper-cat-energy {
+			border: 3px solid #68b738;
+		}
+		.sites__img-wrapper-cat-energy:hover {
+			border: 3px solid #5eaa2f;
+		}
+		.sites__img-wrapper-gllacy {
+			border: 3px solid #f26843;
+		}
+		.sites__img-wrapper-gllacy:hover {
+			border: 3px solid #f58669;
+		}
+		.sites__img-wrapper-mishka {
+			border: 3px solid #64d1bc;
+		}
+		.sites__img-wrapper-mishka:hover {
+			border: 3px solid #57c3b3;
+		}
+		.sites__github {
+			font-size: 20px;
+			line-height: 20px;
+			color: #111;
+		}
+		.sites__github:hover,
+		.sites__github:focus {
+			opacity: .8;
+		}
+		.sites__github:active {
+			opacity: .6;
+		}
+		@media (min-width: 850px) {
+		.sites {
+			padding: 0 50px;
+		}
+		.sites__list {
+			margin-bottom: 50px;
+		}
+		.sites__img-wrapper {
+			width: 250px;
+			height: 300px;
+			margin: 3px 50px;
+		}
+		.sites__img-wrapper:hover,
+		.sites__img-wrapper:focus {
+			width: 256px;
+			height: 306px;
+			margin: 0 47px;
+		}
+		.sites__github {
+			margin-left: 50px;
+		}
+		}
+	</style>
+</head>
+<body>
+	<section class="sites">
+		<h1 class="sites__title">Мои проэкты</h1>
+		<ul class="sites__list">
+			<li class="sites__item">
+				<a class="sites__link" href="cat-energy/index.html">
+					<div class="sites__img-wrapper sites__img-wrapper-cat-energy">
+						<img src="img/cat-energy.jpg" alt="cat-energy" class="sites__img">
+					</div>
+				</a>
+			</li>
+			<li class="sites__item">
+				<a class="sites__link" href="gllacy/index.html">
+					<div class="sites__img-wrapper sites__img-wrapper-gllacy">
+						<img src="img/gllacy.jpg" alt="gllacy" class="sites__img">
+					</div>
+				</a>
+			</li>
+			<li class="sites__item">
+				<a class="sites__link" href="mishka/index.html">
+					<div class="sites__img-wrapper sites__img-wrapper-mishka">
+						<img src="img/mishka.jpg" alt="mishka" class="sites__img">
+					</div>
+				</a>
+			</li>
+		</ul>
+		<a href="https://github.com/Ramax12" class="sites__github">https://github.com/Ramax12</a>
+	</section>
+</body>
+</html>
