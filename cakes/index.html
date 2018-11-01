@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/style.min.css" rel="stylesheet" type="text/css"/>
+	<title>Торты на заказ</title>
+</head>
+<body>
+	<svg style="display:none">
+		<symbol id="ingredient" viewBox="0 0 55 55">
+			<path d="M46.9,8.1C41.8,2.9,34.8,0,27.5,0S13.2,2.9,8.1,8.1C2.9,13.2,0,20.2,0,27.5s2.9,14.3,8.1,19.4c5.2,5.2,12.1,8.1,19.4,8.1
+			s14.3-2.9,19.4-8.1c5.2-5.2,8.1-12.1,8.1-19.4S52.1,13.2,46.9,8.1z M45.8,45.8c-4.9,4.9-11.4,7.6-18.3,7.6s-13.4-2.7-18.3-7.6
+			c-4.9-4.9-7.6-11.4-7.6-18.3S4.3,14.1,9.2,9.2c4.9-4.9,11.4-7.6,18.3-7.6s13.4,2.7,18.3,7.6s7.6,11.4,7.6,18.3
+			S50.7,40.9,45.8,45.8z"/>
+			<path d="M48.4,18.6l-1.5,0.7c1.4,3,2.1,6.2,2.1,9.5h1.6C50.7,25.2,49.9,21.8,48.4,18.6z"/>
+			<path d="M43.9,11.5c-4.6-4.6-10.7-7.1-17.1-7.1V6c6,0,11.7,2.4,16,6.6c1.4,1.4,2.6,2.9,3.6,4.6l1.4-0.8
+			C46.6,14.6,45.4,13,43.9,11.5z"/>
+			<path d="M36.5,33.2c0,0-0.4,0-0.9,0c-1.6,0-4.6,0.3-6.6,2.3c-0.3,0.3-0.5,0.5-0.7,0.8v-4.4h0.1c1.6,0,4.6-0.3,6.6-2.3
+			c2.7-2.7,2.2-7.3,2.2-7.5c0-0.4-0.3-0.7-0.7-0.7c0,0-0.4,0-0.9,0c-1.6,0-4.6,0.3-6.6,2.3c-0.3,0.3-0.5,0.5-0.7,0.8v-2
+			c0.9-0.8,3.4-3.4,3.4-6.6c0-3.8-3.6-6.8-3.7-6.9c-0.3-0.2-0.7-0.2-1,0c-0.2,0.1-3.7,3.1-3.7,6.9c0,3.2,2.6,5.8,3.4,6.6v2
+			c-0.2-0.3-0.4-0.6-0.7-0.8c-2-2-5-2.3-6.6-2.3c-0.6,0-0.9,0-0.9,0c-0.4,0-0.7,0.3-0.7,0.7c0,0.2-0.5,4.8,2.2,7.5
+			c2,2,5,2.3,6.6,2.3h0.1v4.4c-0.2-0.3-0.4-0.5-0.7-0.8c-2-2-5-2.3-6.6-2.3c-0.6,0-0.9,0-0.9,0c-0.4,0-0.7,0.3-0.7,0.7
+			c0,0.2-0.5,4.8,2.2,7.5c2,2,5,2.3,6.6,2.3h0.1V50c0,0.4,0.4,0.8,0.8,0.8c0.4,0,0.8-0.4,0.8-0.8v-6.3h0.1c1.6,0,4.6-0.3,6.6-2.3
+			c2.7-2.7,2.2-7.3,2.2-7.5C37.1,33.5,36.8,33.3,36.5,33.2z M21.2,28.5c-1.6-1.6-1.8-4.3-1.8-5.6h0.1c1.1,0,3.8,0.2,5.5,1.8
+			c1.6,1.6,1.8,4.3,1.8,5.6C25.7,30.3,22.8,30.2,21.2,28.5z M26.7,42.1c-1.1,0-3.9-0.1-5.6-1.8c-1.6-1.6-1.8-4.3-1.8-5.6
+			c1.1,0,3.9,0.1,5.6,1.8S26.7,40.9,26.7,42.1z M27.5,21.1L27.5,21.1c-0.9-0.9-2.7-2.9-2.7-5.2s1.8-4.3,2.7-5.2
+			c0.9,0.9,2.7,2.9,2.7,5.2S28.4,20.2,27.5,21.1z M30.1,24.7L30.1,24.7c1.6-1.6,4.3-1.8,5.4-1.8h0.1c0,1.2-0.2,3.9-1.8,5.6
+			s-4.5,1.8-5.6,1.8C28.3,29,28.5,26.4,30.1,24.7z M33.9,40.3c-1.6,1.7-4.4,1.8-5.5,1.8h-0.1c0-1.3,0.2-4,1.8-5.6l0,0
+			c1.6-1.6,4.4-1.8,5.5-1.8h0.1C35.7,36,35.5,38.7,33.9,40.3z"/>
+		</symbol>
+		<symbol id="delivery" viewBox="0 0 55 54">
+			<path d="M52.1,24.9h-1.3v26.2c0,1.6-1.3,2.9-2.9,2.9H7.2c-1.6,0-2.9-1.3-2.9-2.9V24.9H2.9C1.3,24.9,0,23.6,0,22v-6.9
+			c0-1.6,1.3-2.9,2.9-2.9h7.6c-1.2-1.3-2-3.1-2-5.1c0,0,0-0.3,0-0.4c0.1-2.4,1.4-4.6,3.6-5.8c2.2-1.2,4.8-1.2,7,0l3.5,1.9
+			c2.2,1.2,3.9,3.1,4.9,5.2c1.1-2.2,2.8-4,4.9-5.2l3.5-1.9c2.2-1.2,4.8-1.2,7,0c2.1,1.2,3.5,3.4,3.6,5.8c0,0.1,0,0.4,0,0.4
+			c0,2-0.8,3.8-2,5.1h7.6c1.6,0,2.9,1.3,2.9,2.9V22C55,23.6,53.7,24.9,52.1,24.9z M33,28.6h4.7c0.7,0,1.2,0.5,1.2,1.2
+			c0,0.7-0.5,1.2-1.2,1.2H33v20.6h14.8c0.3,0,0.5-0.2,0.5-0.5l0,0V24.9H33V28.6z M6.7,51.1c0,0.3,0.2,0.5,0.5,0.5H22V31h-5
+			c-0.7,0-1.2-0.5-1.2-1.2c0-0.7,0.5-1.2,1.2-1.2h5v-3.7H6.7V51.1z M2.9,14.6c-0.3,0-0.5,0.2-0.5,0.5V22c0,0.3,0.2,0.5,0.5,0.5H22
+			v-7.9H2.9z M21.4,5L17.9,3c-0.7-0.4-1.5-0.6-2.3-0.6c-0.8,0-1.6,0.2-2.3,0.6c-1.4,0.8-2.3,2.2-2.3,3.7c0,0.1,0,0.3,0,0.3
+			c0,2.8,2.3,5.1,5.1,5.1h10.1C25.8,9.2,24.1,6.5,21.4,5z M24.4,14.6v37h6.1v-37H24.4z M44,6.8c-0.1-1.6-0.9-3-2.3-3.7
+			c-1.4-0.8-3.2-0.8-4.6,0L33.6,5c-2.7,1.5-4.5,4.2-4.8,7.2h10.1c2.8,0,5.1-2.3,5.1-5.1C44,7.1,44,6.8,44,6.8z M52.6,15.1
+			c0-0.3-0.2-0.5-0.5-0.5H33v7.9h19.1c0.3,0,0.5-0.2,0.5-0.5l0,0V15.1z M11.2,31H11c-0.7,0-1.2-0.5-1.2-1.2c0-0.7,0.5-1.2,1.2-1.2h0.1
+			c0.7,0,1.2,0.5,1.2,1.2C12.4,30.5,11.8,31,11.2,31z M43.6,31h-0.1c-0.7,0-1.2-0.5-1.2-1.2c0-0.7,0.5-1.2,1.2-1.2h0.1
+			c0.7,0,1.2,0.5,1.2,1.2C44.8,30.5,44.3,31,43.6,31z"/>
+		</symbol>
+		<symbol id="cake" viewBox="0 0 61 36">
+			<polygon points="41.1,12.9 42.1,12.9 42.1,14 44,14 44,12 41.1,12 "/>
+			<polygon points="45.1,14 48.1,14 48.1,15 49.2,15 49.2,16 50.1,16 50.1,17 51.1,17 51.1,18 51.9,18 51.9,19.1 
+			53.1,19.1 53.1,20.1 53.9,20.1 53.9,21.9 54.9,21.9 54.9,24.3 56.1,24.3 56.1,26.9 57.1,26.9 57.1,28.9 54.9,28.9 54.9,26.9 
+			53.9,26.9 53.9,24 53,24 53,21.9 52,21.9 52,21 51.1,21 51.1,19.7 50.1,19.7 50.1,19.1 48.9,19.1 48.9,17.7 48.1,17.7 48.1,17 
+			47.2,17 47.2,16 45.9,16 45.9,15 45.1,15 "/>
+			<path fill="none" d="M18.1,8.1V5.9H17V5h-0.9V4.1h-1.3V3h-2.9V2L9,2v1H7v0.9H5.1V5H3.9v0.8H3.1V9H2v3h1v2.2h1V16h1.1v1h1.1v1h1.9
+			v1.1h4.9V18H15v-1.1h1.2v-0.9h0.9V15h0.9v-1.9h0.8V8.1H18.1z M10,9.9H9.1v1h-1v2H10V14H5.1v-0.9H6v-1.1h0.9V9.9H8V8H7.1v1l-2-0.1V8
+			h0.9V7.1H9V8h1V9.9z M15.9,12h-0.8v2h-1.1v-1.1h-1v-0.9H11v-2h1V7.9h0.9V7.1h1.1V9h-1v1.9h1V10H15v1.2h0.9V12z"/>
+			<path d="M60.1,30.1v-4.2h-1V23h-1.1v-2h-1v-1.9h-0.9v-1.9h-1V16h-1.1v-0.9h-0.9v-1h-1.1v-1.2h-1v-1h-0.9v-0.8h-1.1
+			v-1H47V9h-1.9V8h-2.2V6.9H39V6h-4.9V4H35V1.1h-0.8V0h-2.1v1.1h-1V4H32v2h-7.1v1H22v1.1h-1.1V6.1h-1.1V4.1H19V3.2h-1V2.1h-1.9V0.9
+			h-2.1C14,0.6,14,0.3,14,0H7.1v1h-2v1H3.9v0.9H3V4h-1v2h-1v2H0V14h1.2v2H2v1h1v1h1v1.1h0.9V20h2v2.1H5.9V25H5.1v4.2H3.9v5.9h0.9
+			L5.2,36h54.7v-1.1H61v-4.8H60.1z M6.2,18v-1H5.1v-1H3.9v-1.8H3V12H2V9h1.1V5.9h0.8V5h1.1V3.9H7V3h2V2l2.9,0v1h2.9v1.1h1.3V5H17v0.9
+			h1.1v2.1h0.8v5.1h-0.8V15h-0.9v1.1h-0.9v0.9H15V18h-1.9v1.1H8.1V18H6.2z M44,33H20.9v-4.1h1.3V30h1.6v1h3.4v-1h3v-1.1h0.6V28H32
+			v-1.1h2.9v1.3h1.4v0.7h0.6v1.2h2.2v0.9h3.9v-0.9H44V33z M44,28h-1v0.9h-3.9v-0.6h-0.9V27h-1.3v-0.9h-0.9v-1.1h-1.8v-1h-1v1h-2.1
+			v1.1h-1.1v1h-1.1v1.1h-1.8v0.8h-2.9V28H23v-1.2h-1v-0.7h-1.1V21H44V28z M28.3,16v-2h1.8v0.9h0.8V16h1v1h-1.9v-1H28.3z M34.1,17
+			v-0.9h0.8l0.1-1.1h0.9v1.1h-0.9V17H34.1z M59.2,33.9H46.1V19.1h-11V18h1.1v-0.9H37v-1.2h1V14h-0.8v-0.9h-2.1V14h-1v1.1h-1V14h-0.9
+			v-0.9H31v-1.3h-3.1v-0.7H26v0.9h-0.9V14h0.9v1.7H27v1.4h1.3V18h0.8v1.1H18.9v14.8H6.2v-2.8h0.9v-4.9h1.1v-3.3h0.8V21h4.1v-1h2.8v-1
+			h1.2v-1h1.1v-1.1h0.9v-1.1h1v-0.9h0.8v-4.8h1.1v-1H26v-1h11v1h5.1v1h2.2v0.9h2v1.2h1.8v0.7h1.1V14h1.1v0.9h0.8v0.9h1.1v0.9h0.9V18
+			h1.1v1.1h1V21h0.9v2h1v2.9h1.1V30h1.1V33.9z"/>
+			<polygon points="15.9,11.2 15.9,12 15.1,12 15.1,14 14.1,14 14.1,12.9 13.1,12.9 13.1,12.1 11,12.1 11,10.1 
+			12,10.1 12,7.9 12.9,7.9 12.9,7.1 14.1,7.1 14.1,9 13.1,9 13.1,10.9 14.1,10.9 14.1,10 15,10 15,11.2"/>
+			<polygon points="8.1,10.9 8.1,12.9 10,12.9 10,14 5.1,14 5.1,13.1 6,13.1 6,12.1 6.9,12.1 6.9,9.9 8,9.9 8,8 7.1,8 
+			7.1,9 5.1,8.9 5.1,8 5.9,8 5.9,7.1 9,7.1 9,8 10,8 10,9.9 9.1,9.9 9.1,10.9"/>
+			<polygon fill="none" points="59.2,30 59.2,33.9 46.1,33.9 46.1,19.1 35.1,19.1 35.1,18 36.1,18 36.1,17.1 37,17.1 37,15.9 38,15.9 
+			38,14 37.2,14 37.2,13.1 35.1,13.1 35.1,14 34.1,14 34.1,15.1 33.1,15.1 33.1,14 32.2,14 32.2,13.1 31,13.1 31,11.8 27.9,11.8 
+			27.9,11.1 26,11.1 26,12.1 25.1,12.1 25.1,14 26.1,14 26.1,15.7 27,15.7 27,17.1 28.3,17.1 28.3,18 29.1,18 29.1,19.1 18.9,19.1 
+			18.9,33.9 6.2,33.9 6.2,31.1 7.1,31.1 7.1,26.2 8.2,26.2 8.2,22.9 8.9,22.9 8.9,21 13.1,21 13.1,20 15.9,20 15.9,19 17.1,19 
+			17.1,18 18.2,18 18.2,16.9 19.1,16.9 19.1,15.8 20.1,15.8 20.1,14.9 20.9,14.9 20.9,10.1 22.1,10.1 22.1,9.1 26,9.1 26,8.1 37,8.1 
+			37,9.1 42.1,9.1 42.1,10.1 44.3,10.1 44.3,10.9 46.3,10.9 46.3,12.1 48.1,12.1 48.1,12.8 49.2,12.8 49.2,14 50.3,14 50.3,14.9 
+			51.1,14.9 51.1,15.9 52.2,15.9 52.2,16.8 53.1,16.8 53.1,18 54.2,18 54.2,19.1 55.2,19.1 55.2,21 56.1,21 56.1,23 57.1,23 
+			57.1,25.9 58.1,25.9 58.1,30"/>
+			<polygon fill="none" points="44,21 44,28 43,28 43,28.9 39.1,28.9 39.1,28.3 38.1,28.3 38.1,27 36.8,27 36.8,26.1 35.9,26.1 
+			35.9,24.9 34.2,24.9 34.2,23.9 33.2,23.9 33.2,24.9 31.1,24.9 31.1,26.1 29.9,26.1 29.9,27.1 28.9,27.1 28.9,28.1 27.1,28.1 
+			27.1,28.9 24.2,28.9 24.2,28 23,28 23,26.8 22,26.8 22,26.1 20.9,26.1 20.9,21"/>
+			<polygon fill="none" points="44,30.1 44,33 20.9,33 20.9,28.9 22.2,28.9 22.2,30 23.8,30 23.8,30.9 27.2,30.9 27.2,30 30.2,30 
+			30.2,28.9 30.8,28.9 30.8,28 32,28 32,26.9 34.9,26.9 34.9,28.2 36.3,28.2 36.3,28.9 36.9,28.9 36.9,30.1 39.1,30.1 39.1,30.9 
+			42.9,30.9 42.9,30.1"/>
+			<polygon fill="none" points="31.9,16 31.9,17 29.9,17 29.9,16 28.3,16 28.3,14 30.1,14 30.1,14.9 30.9,14.9 30.9,16"/>
+			<polygon fill="none" points="35.8,15 35.8,16.1 34.9,16.1 34.9,15 	"/>
+		</symbol>
+		<symbol id="arrow" viewBox="0 0 31.5 31.5">
+			<path class="st0" d="M21.2,5c-0.4-0.4-1.1-0.4-1.6,0c-0.4,0.4-0.4,1.1,0,1.6l8,8H1.1c-0.6,0-1.1,0.5-1.1,1.1s0.5,1.1,1.1,1.1h26.6
+			l-8,8c-0.4,0.4-0.4,1.2,0,1.6c0.4,0.4,1.2,0.4,1.6,0l10-10c0.4-0.4,0.4-1.1,0-1.6L21.2,5z"/>
+		</symbol>
+		<symbol id="bracket" viewBox="0 0 8.97 16">
+			<path d="M8.5,9.1c0.6-0.6,0.6-1.5,0-2.1L1.7,0.3c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4L6.8,8l-6.5,6.3c-0.4,0.4-0.4,1,0,1.4
+	c0.4,0.4,1,0.4,1.4,0L8.5,9.1L8.5,9.1z"/>
+		</symbol>
+		<symbol id="instagram" viewBox="0 0 17 16">
+			<path d="M11.8,1C13.6,1,15,2.4,15,4.2v7.7c0,1.7-1.4,3.1-3.1,3.1H4.2C2.4,15,1,13.6,1,11.8V4.2C1,2.4,2.4,1,4.2,1
+			L11.8,1 M11.8,0H4.2C1.9,0,0,1.9,0,4.2v7.7C0,14.1,1.9,16,4.2,16h7.7c2.3,0,4.2-1.9,4.2-4.2V4.2C16,1.9,14.1,0,11.8,0L11.8,0z"/>
+			<path d="M8,4.9c1.7,0,3.1,1.4,3.1,3.1c0,1.7-1.4,3.1-3.1,3.1c-1.7,0-3.1-1.4-3.1-3.1C4.9,6.3,6.3,4.9,8,4.9 M8,3.9
+			C5.7,3.9,3.9,5.7,3.9,8s1.8,4.1,4.1,4.1s4.1-1.8,4.1-4.1S10.3,3.9,8,3.9L8,3.9z"/>
+			<circle cx="12.3" cy="3.7" r="0.9"/>
+		</symbol>
+		<symbol id="vkontakte" viewBox="0 0 22 12">
+			<path d="M17.6,12c-0.3,0-0.9-0.1-1.5-0.5c-0.5-0.3-0.9-0.7-1.3-1.2c-0.3-0.3-0.9-0.9-1.1-0.9c-0.2,0.1-0.4,0.7-0.3,1.2
+			c0,0.1,0,0.6-0.3,0.9c-0.3,0.3-0.8,0.4-0.9,0.4l-1.4,0c-0.7,0-3.2-0.2-5.4-2.3C2.5,7.1,0.2,2.2,0.1,2C0,1.6-0.1,1.2,0.2,0.9
+			c0.3-0.3,0.8-0.4,1-0.4l3,0l0.1,0c0.1,0,0.4,0.1,0.7,0.3c0.3,0.2,0.4,0.5,0.5,0.6c0,0,0.5,1.1,1.1,2c1,1.5,1.4,1.9,1.5,2
+			C8.2,5,8.3,4,8.2,3.1c0-0.4-0.1-0.8-0.2-1C7.9,2,7.7,1.9,7.5,1.9L6.9,1.4C6.9,0.9,7.4,0.5,7.8,0.3C8.3,0.1,9.1,0,10.1,0l0.5,0
+			c0.9,0,1.2,0.1,1.6,0.1c1.2,0.3,1.2,1.3,1.1,2.5c0,0.4,0,0.8,0,1.2c0,0.1,0,0.2,0,0.4c0,0.3,0,0.8,0.1,1c0.2-0.1,0.6-0.5,1.5-1.9
+			c0.6-0.9,1-1.9,1.1-2.1l0,0c0.1-0.3,0.4-0.7,1.2-0.7l3.1,0c0,0,0.1,0,0.3,0c0.7,0,1.2,0.2,1.3,0.7c0.2,0.5,0.1,1.3-1.7,3.5
+			c-0.3,0.3-0.5,0.6-0.7,0.9C19,6,18.6,6.6,18.6,6.7c0,0.1,0.5,0.5,0.9,0.9c1.1,0.9,1.9,1.7,2.2,2.3c0.4,0.6,0.3,1,0.2,1.3
+			c-0.3,0.7-1.2,0.7-1.4,0.8l-2.8,0C17.7,12,17.6,12,17.6,12z M13.7,8.3c0.7,0,1.2,0.6,1.8,1.2c0.4,0.4,0.7,0.8,1.1,1
+			c0.5,0.3,1,0.3,1,0.3l0.1,0l2.8,0c0.1,0,0.3-0.1,0.4-0.1c0,0,0-0.1-0.1-0.1c-0.3-0.5-1-1.3-2-2.1c-0.9-0.7-1.3-1.1-1.4-1.7
+			c0-0.6,0.4-1.1,1.2-2.1c0.2-0.2,0.4-0.5,0.7-0.8c1.1-1.4,1.4-2,1.5-2.3c-0.1,0-0.5,0-0.5,0l-3.2,0c-0.1,0-0.2,0-0.2,0
+			C16.9,2,16.4,3.1,15.8,4c-1.4,2.1-2,2.4-2.5,2.4c-0.1,0-0.3,0-0.4-0.1c-0.7-0.4-0.7-1.4-0.7-2.1c0-0.1,0-0.2,0-0.3
+			c0-0.5,0-0.9,0-1.3c0.1-1.3,0-1.3-0.3-1.4c-0.3-0.1-0.5-0.1-1.4-0.1l-0.5,0c-0.5,0-1,0-1.4,0.1c0.1,0.1,0.1,0.1,0.2,0.2
+			c0.4,0.5,0.4,1.5,0.4,1.7c0.1,1.3,0,2.9-0.7,3.3C8.4,6.4,8.3,6.5,8.1,6.5C7.5,6.5,6.8,5.8,5.6,4C5,2.9,4.5,1.8,4.5,1.8
+			c0,0,0-0.1-0.1-0.1c-0.1,0-0.2-0.1-0.2-0.1l-2.9,0c0,0,0,0-0.1,0c0.4,0.9,2.5,5,4.8,7.2c2,1.9,4.3,2,4.7,2l1.4,0c0,0,0.2,0,0.2-0.1
+			c0,0,0,0,0-0.1c0-0.2,0-2,1.2-2.3C13.5,8.3,13.6,8.3,13.7,8.3z"/>
+		</symbol>
+		<symbol id="twitter" viewBox="0 0 86 86">
+			<path d="M84.7,10.4c-0.7-0.6-1.6-0.6-2.2,0.1c-0.5,0.4-1.1,0.8-1.9,1.1c2.6-4,2.7-6.6,2.6-7.3c-0.1-0.8-0.5-1.6-1.1-2
+			c-0.6-0.4-1.4-0.3-1.9,0.2c-3.6,3.1-7.1,3.8-9.2,3.9c-3.4-3.8-7.8-6-12.4-6c-10.1,0-18.3,10-18.3,22.3c0,0.9,0,1.8,0.1,2.7
+			C23.5,25,9.9,5.6,9.7,5.4c-0.4-0.6-1-0.9-1.6-0.8C7.5,4.7,6.9,5.1,6.6,5.7C2.3,14.7,4.1,23.2,7,29.1c-0.5-0.4-1.2-0.4-1.8,0
+			c-0.6,0.4-1.1,1.2-1.1,2.1c-0.1,9.4,3.4,15,6.9,18.3c-0.3,0.1-0.5,0.3-0.7,0.6c-0.5,0.6-0.6,1.5-0.4,2.3
+			C12.4,62,18.2,65.7,22.3,67c-4.7,4-10.4,5-14.8,5c-2.8,0-4.7-0.4-4.7-0.4C1.9,71.4,1,72,0.7,73c-0.4,1-0.1,2.2,0.6,2.8
+			c8.8,8.1,19.4,9.8,26.7,9.8c5.8,0,9.8-1,10-1.1c37.7-10.8,39.1-52.1,39.1-59.6c7.1-7.9,8.2-11,8.4-11.8
+			C85.7,12,85.4,11,84.7,10.4z M73.9,22.1c-0.4,0.5-0.7,1.2-0.6,1.9c0,0.4,2.1,45-36,55.9c0,0-3.8,1-9.2,1c-5,0-11.6-0.8-17.9-4.2
+			c5.8-0.5,12.9-2.6,18-9.5c0.5-0.7,0.6-1.7,0.3-2.5c-0.3-0.9-1-1.4-1.8-1.4c-0.4,0-7.9-0.1-11.7-8.7c1.8,0.1,3.4-0.2,4.5-0.9
+			c0.8-0.4,1.2-1.4,1.1-2.4c-0.1-1-0.7-1.8-1.5-2.1c-0.4-0.1-9.1-2.5-10.7-13.8c1.4,0.6,3,1.1,4.6,0.8c0.7-0.1,1.4-0.8,1.6-1.7
+			c0.2-0.9,0-1.8-0.6-2.4c-0.4-0.4-8.7-9.3-5.1-20.8c4.9,6,18.1,20.2,34,19.1c0.6,0,1.1-0.4,1.4-1c0.3-0.6,0.5-1.3,0.3-2
+			c-0.3-1.4-0.4-2.9-0.4-4.4c0-9.7,6.5-17.6,14.4-17.6c3.9,0,7.5,1.9,10.3,5.3c0.4,0.4,0.8,0.7,1.3,0.7l0.3,0
+			c1.4,0,3.6-0.2,6.2-1.2c-0.8,1.1-1.9,2.2-3.2,3.5c-0.7,0.6-0.9,1.7-0.6,2.7c0.3,1,1.1,1.6,1.9,1.5c0.3,0,1.7-0.2,3.4-0.5
+			C77,18.5,75.6,20.1,73.9,22.1z"/>
+		</symbol>
+	</svg>
+	<header class="page-header">
+		<nav class="main-nav main-nav--closed nav">
+			<a href="index.html" class="main-nav__logo">Cakes</a>
+			<button class="main-nav__toggle" type="button"></button>
+			<ul class="main-nav__list">
+				<li class="main-nav__item">
+					<a href="#variety" class="main-nav__link">Наши торты</a>
+				</li>
+				<li class="main-nav__item">
+					<a href="#collect" class="main-nav__link main-nav__link--active">Индивидуальный заказ</a>
+				</li>
+				<li class="main-nav__item">
+					<a href="#reviews" class="main-nav__link">Отзывы</a>
+				</li>
+				<li class="main-nav__item">
+					<a href="#about" class="main-nav__link">О нас</a>
+				</li>
+				<li class="main-nav__item">
+					<a href="#info" class="main-nav__link">Как заказать</a>
+				</li>
+				<li class="main-nav__item">
+					<a href="#contacts" class="main-nav__link">Контакты</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="page-header__info">
+			<a class="page-header__info-tel" href="tel:+79068999296">+7 906 899 92 96</a>
+		</div>
+	</header>
+	<main>
+		<section class="main">
+			<h1 class="main__title">Торты на заказ</h1>
+			<p class="main__subtitle subtitle">Ручная работа</p>
+			<ul class="main__list">
+				<li class="main__item main__item--ingredient">
+					<svg width="33" height="33">
+						<use xlink:href='#ingredient'/>
+					</svg>
+					<p>Натуральные ингредиенты</p>
+				</li>
+				<li class="main__item main__item--delivery">
+					<svg width="33" height="33">
+						<use xlink:href='#delivery'/>
+					</svg>
+					<p>Доставка бесплатно при заказе от 2000 рублей*</p>
+				</li>
+			</ul>
+			<a href="#" class="main__btn btn">Выбрать торт</a>
+		</section>
+		<section class="variety" id="variety">
+			<h2 class="title">Наши торты</h2>
+			<ul class="variety__list">
+				<li class="variety__item variety__item--classic">
+					<a href="#" class="variety__link">
+						<h3 class="variety__title">Классические</h3>
+						<p class="variety__subtitle">24 вида</p>
+						<div class="variety__arrow">
+							<span class="variety__arrow-text">Смотреть</span>
+							<svg width="17" height="17">
+								<use xlink:href='#arrow'/>
+							</svg>
+						</div>
+					</a>
+				</li>
+				<li class="variety__item variety__item--mousseous">
+					<a href="#" class="variety__link">
+						<h3 class="variety__title">Муссовые</h3>
+						<p class="variety__subtitle">12 видов</p>
+						<div class="variety__arrow">
+							<svg width="17" height="17">
+								<use xlink:href='#arrow'/>
+							</svg>
+						</div>
+					</a>
+				</li>
+				<li class="variety__item variety__item--wedding">
+					<a href="#" class="variety__link">
+						<h3 class="variety__title">Свадебные</h3>
+						<p class="variety__subtitle">20 видов</p>
+						<div class="variety__arrow">
+							<svg width="17" height="17">
+								<use xlink:href='#arrow'/>
+							</svg>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="variety__list">
+				<li class="variety__item variety__item--man">
+					<a href="#" class="variety__link">
+						<h3 class="variety__title">Мужчинам</h3>
+						<p class="variety__subtitle">12 видов</p>
+						<div class="variety__arrow">
+							<svg width="17" height="17">
+								<use xlink:href='#arrow'/>
+							</svg>
+						</div>
+					</a>
+				</li>
+				<li class="variety__item variety__item--woman">
+					<a href="#" class="variety__link">
+						<h3 class="variety__title">Женщинам</h3>
+						<p class="variety__subtitle">16 видов</p>
+						<div class="variety__arrow">
+							<svg width="17" height="17">
+								<use xlink:href='#arrow'/>
+							</svg>
+						</div>
+					</a>
+				</li>
+				<li class="variety__item variety__item--children">
+					<a href="#" class="variety__link">
+						<h3 class="variety__title">Детские</h3>
+						<p class="variety__subtitle">18 видов</p>
+						<div class="variety__arrow">
+							<span class="variety__arrow-text">Смотреть</span>
+							<svg width="17" height="17">
+								<use xlink:href='#arrow'/>
+							</svg>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</section>
+		<section class="collect" id="collect">
+			<h2 class="collect__title title">Индивидуальный заказ</h2>
+			<p class="collect__subtitle subtitle">Соберите торт в 3 шага</p>
+			<div class="collect__list">
+				<div class="collect__item">
+					<div class="collect__head">
+						<span class="collect__marking">01</span>
+						<span class="collect__name">Выберите начинку</span>
+					</div>
+					<div class="view slider slider--filling view--filling">
+						<div class="view__item slider__item slider__item--filling">
+							<div class="view__img-wrapper view__img-wrapper--filling">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/filling-1-desktop@1x.png 1x, img/filling-1-desktop@2x.png 2x">
+									<source media="(min-width: 768px)" srcset="img/filling-1-tablet@1x.png 1x, img/filling-1-tablet@2x.png 2x">
+									<img src="img/filling-1-mobile@1x.png" srcset="img/filling-1-mobile@2x.png 2x" alt="Шоколадный ганаш" title="Шоколадный ганаш" class="view__img view__img--filling">
+								</picture>
+							</div>
+							<div class="view__text-wrapper">
+								<h3 class="view__title">Шоколадный ганаш</h3>
+								<p class="view__content content">Ароматный шоколадный бисквит, густой шоколадный крем – самый шоколадный из всех возможных десертов!</p>
+								<span class="view__price">1000 руб/кг</span>
+								<a href="" class="view__btn btn view__btn--filling">Выбрать</a>
+							</div>
+						</div>
+						<div class="view__item slider__item slider__item--filling">
+							<div class="view__img-wrapper view__img-wrapper--filling">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/filling-2-desktop@1x.png 1x, img/filling-2-desktop@2x.png 2x">
+									<source media="(min-width: 768px)" srcset="img/filling-2-tablet@1x.png 1x, img/filling-2-tablet@2x.png 2x">
+									<img src="img/filling-2-mobile@1x.png" srcset="img/filling-2-mobile@2x.png 2x" alt="Карамель" title="Карамель" class="view__img view__img--filling">
+								</picture>
+							</div>
+							<div class="view__text-wrapper">
+								<h3 class="view__title">Карамель</h3>
+								<p class="view__content content">Бисквитный торт для любителей классики. Сочные бисквиты прослоены плотным, насыщенным сливочным карамельным кремом.</p>
+								<span class="view__price">1100 руб/кг</span>
+								<a href="" class="view__btn btn view__btn--filling">Выбрать</a>
+							</div>
+						</div>
+						<div class="view__item slider__item slider__item--filling">
+							<div class="view__img-wrapper view__img-wrapper--filling">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/filling-3-desktop@1x.png 1x, img/filling-3-desktop@2x.png 2x">
+									<source media="(min-width: 768px)" srcset="img/filling-3-tablet@1x.png 1x, img/filling-3-tablet@2x.png 2x">
+									<img src="img/filling-3-mobile@1x.png" srcset="img/filling-3-mobile@2x.png 2x" alt="Аристократ" title="Аристократ" class="view__img view__img--filling">
+								</picture>
+							</div>
+							<div class="view__text-wrapper">
+								<h3 class="view__title">Аристократ</h3>
+								<p class="view__content content">Пропитанный ванильный бисквит, традиционное сочетание карамелезированного яблока с корицей и сметанное мусс-суфле.</p>
+								<span class="view__price">1200 руб/кг</span>
+								<a href="" class="view__btn btn view__btn--filling">Выбрать</a>
+							</div>
+						</div>
+						<div class="view__item slider__item slider__item--filling">
+							<div class="view__img-wrapper view__img-wrapper--filling">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/filling-4-desktop@1x.png 1x, img/filling-4-desktop@2x.png 2x">
+									<source media="(min-width: 768px)" srcset="img/filling-4-tablet@1x.png 1x, img/filling-4-tablet@2x.png 2x">
+									<img src="img/filling-4-mobile@1x.png" srcset="img/filling-4-mobile@2x.png 2x" alt="Новая классика" title="Новая классика" class="view__img view__img--filling">
+								</picture>
+							</div>
+							<div class="view__text-wrapper">
+								<h3 class="view__title">Новая классика</h3>
+								<p class="view__content content">Шоколадный бисквит на сметане, легкий сметанный мусс с натуральной ягодной кислинкой (смородина, черника или другие ягоды)</p>
+								<span class="view__price">1100 руб/кг</span>
+								<a href="" class="view__btn btn view__btn--filling">Выбрать</a>
+							</div>
+						</div>
+						<div class="view__item slider__item slider__item--filling">
+							<div class="view__img-wrapper view__img-wrapper--filling">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/filling-5-desktop@1x.png 1x, img/filling-5-desktop@2x.png 2x">
+									<source media="(min-width: 768px)" srcset="img/filling-5-tablet@1x.png 1x, img/filling-5-tablet@2x.png 2x">
+									<img src="img/filling-5-mobile@1x.png" srcset="img/filling-5-mobile@2x.png 2x" alt="Киев" title="Киев" class="view__img view__img--filling">
+								</picture>
+							</div>
+							<div class="view__text-wrapper">
+								<h3 class="view__title">Киев</h3>
+								<p class="view__content content">Торт по ГОСТу с соблюдением всех нюансов: воздушный корж-безе с дробленным фундуком, крем на основе масла высшего сорта с какао и коньяком.</p>
+								<span class="view__price">1000 руб/кг</span>
+								<a href="" class="view__btn btn view__btn--filling">Выбрать</a>
+							</div>
+						</div>
+						<div class="view__item slider__item slider__item--filling">
+							<div class="view__img-wrapper view__img-wrapper--filling">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/filling-6-desktop@1x.png 1x, img/filling-6-desktop@2x.png 2x">
+									<source media="(min-width: 768px)" srcset="img/filling-6-tablet@1x.png 1x, img/filling-6-tablet@2x.png 2x">
+									<img src="img/filling-6-mobile@1x.png" srcset="img/filling-6-mobile@2x.png 2x" alt="Неженка" title="Неженка" class="view__img view__img--filling">
+								</picture>
+							</div>
+							<div class="view__text-wrapper">
+								<h3 class="view__title">Неженка</h3>
+								<p class="view__content content">Самая нежная начинка - не приторная, легкая. Состоит из пропитанного ванильного бисквита, творожного мусса с кусочками банана и персика.</p>
+								<span class="view__price">1100 руб/кг</span>
+								<a href="" class="view__btn btn view__btn--filling">Выбрать</a>
+							</div>
+						</div>
+						<div class="slider__controls slider__controls--filling">
+							<span class="slider__toggle slider__toggle--active"></span>
+							<span class="slider__toggle"></span>
+							<span class="slider__toggle"></span>
+							<span class="slider__toggle"></span>
+							<span class="slider__toggle"></span>
+						</div>
+						<span class="view__number view__number--filling slider__number"></span>
+						<div class="slider__previous-btn">
+							<svg width="8.97" height="16">
+								<use xlink:href='#bracket'/>
+							</svg>
+						</div>
+						<div class="slider__next-btn">
+							<svg width="8.97" height="16">
+								<use xlink:href='#bracket'/>
+							</svg>
+						</div>
+					</div>
+				</div>
+				<div class="collect__item">
+					<div class="collect__head">
+						<span class="collect__marking">02</span>
+						<span class="collect__name">Размер</span>
+					</div>
+					<div class="view slider slider--size view--size">
+						<div class="view__item slider__item slider__item--size view__item--size-1">
+							<div class="view__img-wrapper view__img-wrapper--size">
+								<img src="img/size-1.jpg" alt="1 кг" title="1 кг" class="view__img view__img--size view__img--size-1">
+							</div>
+							<p class="view__description">17-18 см<br>(1 кг – 6 персон)</p>
+							<a href="" class="view__btn btn view__btn--size view__btn--size-1">Выбрать</a>
+						</div>
+						<div class="view__item slider__item slider__item--size view__item--size-2">
+							<div class="view__img-wrapper view__img-wrapper--size">
+								<img src="img/size-2.jpg" alt="2 кг" title="2 кг" class="view__img view__img--size view__img--size-2">
+							</div>
+							<p class="view__description">23-24 см<br>(10–12 персон)</p>
+							<a href="" class="view__btn btn view__btn--size view__btn--size-2">Выбрать</a>
+						</div>
+						<div class="view__item slider__item slider__item--size view__item--size-3">
+							<div class="view__img-wrapper view__img-wrapper--size">
+								<img src="img/size-3.jpg" alt="5 кг" title="5 кг" class="view__img view__img--size view__img--size-3">
+							</div>
+							<p class="view__description">Два яруса 25 и 20 см<br>(15–20 персон)</p>
+							<a href="" class="view__btn btn view__btn--size view__btn--size-3">Выбрать</a>
+						</div>
+						<div class="view__item slider__item slider__item--size view__item--size-4">
+							<div class="view__img-wrapper view__img-wrapper--size">
+								<img src="img/size-4.jpg" alt="8 кг" title="8 кг" class="view__img view__img--size view__img--size-4">
+							</div>
+							<p class="view__description">Три яруса 30,25 и 18 см<br>(25–30 персон)</p>
+							<a href="" class="view__btn btn view__btn--size view__btn--size-4">Выбрать</a>
+						</div>
+						<div class="slider__controls slider__controls--size">
+							<span class="slider__toggle slider__toggle--active"></span>
+							<span class="slider__toggle"></span>
+							<span class="slider__toggle"></span>
+							<span class="slider__toggle"></span>
+						</div>
+					</div>
+				</div>
+				<div class="collect__item collect__item--last">
+					<div class="collect__head">
+						<span class="collect__marking">03</span>
+						<span class="collect__name">Оформление</span>
+					</div>
+					<div class="view slider slider--decor view--decor">
+						<div class="view__item slider__item slider__item--decor view__item--decor">
+							<div class="view__img-wrapper view__img-wrapper--decor">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/decor-2-desktop@1x.jpg 1x, img/decor-2-desktop@2x.jpg 2x">
+									<source media="(min-width: 768px)" srcset="img/decor-2-tablet@1x.jpg 1x, img/decor-2-tablet@2x.jpg 2x">
+									<img src="img/decor-2-mobile@1x.jpg" srcset="img/decor-2-mobile@2x.jpg 2x" alt="Маршмэллоу" title="Маршмэллоу" class="view__img view__img--decor">
+								</picture>
+							</div>
+							<p class="view__content view__content--decor content">Маршмэллоу</p>
+							<span class="view__price view__price--decor">600 руб/кг</span>
+							<a href="" class="view__btn btn view__btn--decor">Выбрать</a>
+						</div>
+						<div class="view__item slider__item slider__item--decor view__item--decor">
+							<div class="view__img-wrapper view__img-wrapper--decor">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/decor-1-desktop@1x.jpg 1x, img/decor-1-desktop@2x.jpg 2x">
+									<source media="(min-width: 768px)" srcset="img/decor-1-tablet@1x.jpg 1x, img/decor-1-tablet@2x.jpg 2x">
+									<img src="img/decor-1-mobile@1x.jpg" srcset="img/decor-1-mobile@2x.jpg 2x" alt="Ягодное ассорти" title="Ягодное ассорти" class="view__img view__img--decor">
+								</picture>
+							</div>
+							<p class="view__content view__content--decor content">Ягодное ассорти</p>
+							<span class="view__price view__price--decor">700 руб/кг</span>
+							<a href="" class="view__btn btn view__btn--decor">Выбрать</a>
+						</div>
+						<div class="view__item slider__item slider__item--decor view__item--decor">
+							<div class="view__img-wrapper view__img-wrapper--decor">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/decor-3-desktop@1x.jpg 1x, img/decor-3-desktop@2x.jpg 2x">
+									<source media="(min-width: 768px)" srcset="img/decor-3-tablet@1x.jpg 1x, img/decor-3-tablet@2x.jpg 2x">
+									<img src="img/decor-3-mobile@1x.jpg" srcset="img/decor-3-mobile@2x.jpg 2x" alt="Звезда смерти" title="Звезда смерти" class="view__img view__img--decor">
+								</picture>
+							</div>
+							<p class="view__content view__content--decor content">Звезда смерти</p>
+							<span class="view__price view__price--decor">750 руб/кг</span>
+							<a href="" class="view__btn btn view__btn--decor">Выбрать</a>
+						</div>
+						<div class="view__item slider__item slider__item--decor view__item--decor">
+							<div class="view__img-wrapper view__img-wrapper--decor">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/decor-4-desktop@1x.jpg 1x, img/decor-4-desktop@2x.jpg 2x">
+									<source media="(min-width: 768px)" srcset="img/decor-4-tablet@1x.jpg 1x, img/decor-4-tablet@2x.jpg 2x">
+									<img src="img/decor-4-mobile@1x.jpg" srcset="img/decor-4-mobile@2x.jpg 2x" alt="Время приключений" title="Время приключений" class="view__img view__img--decor">
+								</picture>
+							</div>
+							<p class="view__content view__content--decor content">Время приключений</p>
+							<span class="view__price view__price--decor">700 руб/кг</span>
+							<a href="" class="view__btn btn view__btn--decor">Выбрать</a>
+						</div>
+						<div class="view__item slider__item slider__item--decor view__item--decor">
+							<div class="view__img-wrapper view__img-wrapper--decor">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/decor-5-desktop@1x.jpg 1x, img/decor-5-desktop@2x.jpg 2x">
+									<source media="(min-width: 768px)" srcset="img/decor-5-tablet@1x.jpg 1x, img/decor-5-tablet@2x.jpg 2x">
+									<img src="img/decor-5-mobile@1x.jpg" srcset="img/decor-5-mobile@2x.jpg 2x" alt="Сладкоежка" title="Сладкоежка" class="view__img view__img--decor">
+								</picture>
+							</div>
+							<p class="view__content view__content--decor content">Сладкоежка</p>
+							<span class="view__price view__price--decor">600 руб/кг</span>
+							<a href="" class="view__btn btn view__btn--decor">Выбрать</a>
+						</div>
+						<div class="view__item slider__item slider__item--decor view__item--decor">
+							<div class="view__img-wrapper view__img-wrapper--decor">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/decor-6-desktop@1x.jpg 1x, img/decor-6-desktop@2x.jpg 2x">
+									<source media="(min-width: 768px)" srcset="img/decor-6-tablet@1x.jpg 1x, img/decor-6-tablet@2x.jpg 2x">
+									<img src="img/decor-6-mobile@1x.jpg" srcset="img/decor-6-mobile@2x.jpg 2x" alt="Северный мед<" title="Северный мед" class="view__img view__img--decor">
+								</picture>
+							</div>
+							<p class="view__content view__content--decor content">Северный мед</p>
+							<span class="view__price view__price--decor">650 руб/кг</span>
+							<a href="" class="view__btn btn view__btn--decor">Выбрать</a>
+						</div>
+						<div class="view__item slider__item slider__item--decor view__item--decor">
+							<div class="view__img-wrapper view__img-wrapper--decor">
+								<picture>
+									<source media="(min-width: 1366px)" srcset="img/decor-7-desktop@1x.jpg 1x, img/decor-7-desktop@2x.jpg 2x">
+									<source media="(min-width: 768px)" srcset="img/decor-7-tablet@1x.jpg 1x, img/decor-7-tablet@2x.jpg 2x">
+									<img src="img/decor-7-mobile@1x.jpg" srcset="img/decor-7-mobile@2x.jpg 2x" alt="Бельгийский шоколадный" title="Бельгийский шоколадный" class="view__img view__img--decor">
+								</picture>
+							</div>
+							<p class="view__content view__content--decor content">Бельгийский шоколадный</p>
+							<span class="view__price view__price--decor">600 руб/кг</span>
+							<a href="" class="view__btn btn view__btn--decor">Выбрать</a>
+						</div>
+						<div class="slider__controls slider__controls--decor">
+							<span class="slider__toggle slider__toggle--active"></span>
+							<span class="slider__toggle"></span>
+							<span class="slider__toggle"></span>
+							<span class="slider__toggle"></span>
+							<span class="slider__toggle"></span>
+						</div>
+						<span class="view__number view__number--decor slider__number"></span>
+						<div class="slider__previous-btn">
+							<svg width="8.97" height="16">
+								<use xlink:href='#bracket'/>
+							</svg>
+						</div>
+						<div class="slider__next-btn slider__next-btn--decor">
+							<svg width="8.97" height="16">
+								<use xlink:href='#bracket'/>
+							</svg>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="total">
+				<h2 class="total__title">Ваш выбор</h2>
+				<form class="total__form" action="#" method="post">
+					<ul class="total__list">
+						<li class="total__item">
+							<h3 class="total__name total__name--filling">Начинка</h3>
+							<input type="text" class="total__conclusion" value="Шоколадный ганаш" readonly>
+						</li>
+						<li class="total__item">
+							<h3 class="total__name total__name--size">Размер</h3>
+							<input type="text" class="total__conclusion total__conclusion--size" value="1 кг" readonly>
+						</li>
+						<li class="total__item">
+							<h3 class="total__name total__name--decor">Оформление</h3>
+							<input type="text" class="total__conclusion" value="Маршмэллоу" readonly>
+						</li>
+					</ul>
+					<a href="#" class="total__btn btn">заказать торт</a>
+				</form>
+			</div>
+		</section>
+		<section class="reviews" id="reviews">
+			<h2 class="reviews__title title">Отзывы</h2>
+			<div class="reviews__list slider slider--reviews">
+				<div class="reviews__item slider__item">
+					<div class="reviews__img-wrapper">
+						<picture>
+							<source media="(min-width: 1366px)" srcset="img/ava-1-desktop@1x.jpg 1x, img/ava-1-desktop@2x.jpg 2x">
+							<source media="(min-width: 768px)" srcset="img/ava-1-mobile@2x.jpg, img/ava-1-desktop@1x.jpg 2x">
+							<img src="img/ava-1-mobile@1x.jpg" srcset="img/ava-1-mobile@2x.jpg 2x" alt="Аватар" class="reviews__img">
+						</picture>
+					</div>
+					<div class="reviews__text-wrapper">
+						<span class="reviews__name">Мария</span>
+						<span class="reviews__position">юрист, 33 года</span>
+						<div class="reviews__content-wrapper">
+							<p class="reviews__content">Заказывала торт брауни на юбилей мужа. Гости были в восторге! Отдельное спасибо за своевременную доставку! Теперь будем заказывать торты только у вас для наших семейных праздников:)</p>
+						</div>
+						<a href="#" class="reviews__btn">Развернуть</a>
+					</div>
+				</div>
+				<div class="reviews__item slider__item">
+					<div class="reviews__img-wrapper">
+						<picture>
+							<source media="(min-width: 1366px)" srcset="img/ava-2-desktop@1x.jpg 1x, img/ava-2-desktop@2x.jpg 2x">
+							<source media="(min-width: 768px)" srcset="img/ava-2-mobile@2x.jpg, img/ava-2-desktop@1x.jpg 2x">
+							<img src="img/ava-2-mobile@1x.jpg" srcset="img/ava-2-mobile@2x.jpg 2x" alt="Аватар" class="reviews__img">
+						</picture>
+					</div>
+					<div class="reviews__text-wrapper">
+						<span class="reviews__name">Виктория</span>
+						<span class="reviews__position">профессор, 21 год</span>
+						<div class="reviews__content-wrapper">
+							<p class="reviews__content">Хочу выразить благодарность!Заказывала торт "Ягодное ассорти".торт оказался действительно очень вкусным,ягоды и фрукты были свежие ,а бисквит нежный. Отдельное спасибо за доставку-очень точная!</p>
+						</div>
+						<a href="#" class="reviews__btn">Развернуть</a>
+					</div>
+				</div>
+				<div class="reviews__item slider__item">
+					<div class="reviews__img-wrapper">
+						<picture>
+							<source media="(min-width: 1366px)" srcset="img/ava-3-desktop@1x.jpg 1x, img/ava-3-desktop@2x.jpg 2x">
+							<source media="(min-width: 768px)" srcset="img/ava-3-mobile@2x.jpg, img/ava-3-desktop@1x.jpg 2x">
+							<img src="img/ava-3-mobile@1x.jpg" srcset="img/ava-3-mobile@2x.jpg 2x" alt="Аватар" class="reviews__img">
+						</picture>
+					</div>
+					<div class="reviews__text-wrapper">
+						<span class="reviews__name">Вадим</span>
+						<span class="reviews__position">строитель, 42 года</span>
+						<div class="reviews__content-wrapper">
+						<p class="reviews__content">Торт получился очень вкусным и красивым, очень благодарны вашей фирме) Заказывали торт на свадьбу в московскую область, очень хорошо довезли, в целости и сохранности. Торт сделали в точности по фотографии и еще шеф- кондицер давал очень ценные советы по украшению. Очень довольны и всем рекомендуем!)</p>
+						</div>
+						<a href="#" class="reviews__btn">Развернуть</a>
+					</div>
+				</div>
+				<div class="reviews__item slider__item">
+					<div class="reviews__img-wrapper">
+						<picture>
+							<source media="(min-width: 1366px)" srcset="img/ava-4-desktop@1x.jpg 1x, img/ava-4-desktop@2x.jpg 2x">
+							<source media="(min-width: 768px)" srcset="img/ava-4-mobile@2x.jpg, img/ava-4-desktop@1x.jpg 2x">
+							<img src="img/ava-4-mobile@1x.jpg" srcset="img/ava-4-mobile@2x.jpg 2x" alt="Аватар" class="reviews__img">
+						</picture>
+					</div>
+					<div class="reviews__text-wrapper">
+						<span class="reviews__name">Марина</span>
+						<span class="reviews__position">ветеринар, 43 года</span>
+						<div class="reviews__content-wrapper">
+						<p class="reviews__content">Доброго дня. Заказала торт "Пьяная вишня" 2 кг. Думала, что будем есть несколько дней. Сьели за один вечер. Большое спасибо. Торт был очень вкусный. Свежий, красивый. Прекрасно упаковали. Внимательно и приятно обслуживали и общались. Всем рекомендую. Мне дали скидочную карту, буду точно обращаться.</p>
+						</div>
+						<a href="#" class="reviews__btn">Развернуть</a>
+					</div>
+				</div>
+				<div class="reviews__item slider__item">
+					<div class="reviews__img-wrapper">
+						<picture>
+							<source media="(min-width: 1366px)" srcset="img/ava-5-desktop@1x.jpg 1x, img/ava-5-desktop@2x.jpg 2x">
+							<source media="(min-width: 768px)" srcset="img/ava-5-mobile@2x.jpg, img/ava-5-desktop@1x.jpg 2x">
+							<img src="img/ava-5-mobile@1x.jpg" srcset="img/ava-5-mobile@2x.jpg 2x" alt="Аватар" class="reviews__img">
+						</picture>
+					</div>
+					<div class="reviews__text-wrapper">
+						<span class="reviews__name">Татьяна</span>
+						<span class="reviews__position">доктор, 55 лет</span>
+						<div class="reviews__content-wrapper">
+						<p class="reviews__content">Выражаю огромную благодарность всему коллективу вашего производства! Заказывала свадебный торт. Это был не торт - это шедевр!!!! Какой красивый а какой вкусный просто таял во рту! Понравилось всем гостям. Теперь раздаю ваши координаты потому что все спрашивают. Это действительно великолепно а запах фруктовой начинки- супер!Теперь на все события в жизни буду заказывать только у вас . Сделали все по требованию привезли во время. Ребята вы МОЛОДЦЫ!! Спасибо огромное вам! Процветания вам ! Успехов и всех благ!!!!</p>
+						</div>
+						<a href="#" class="reviews__btn">Развернуть</a>
+					</div>
+				</div>
+				<div class="slider__controls">
+					<span class="slider__toggle slider__toggle--active"></span>
+					<span class="slider__toggle"></span>
+					<span class="slider__toggle"></span>
+					<span class="slider__toggle"></span>
+					<span class="slider__toggle"></span>
+				</div>
+				<span class="reviews__number slider__number"></span>
+				<div class="slider__previous-btn">
+					<svg width="8.97" height="16">
+						<use xlink:href='#bracket'/>
+					</svg>
+				</div>
+				<div class="slider__next-btn slider__next-btn--decor">
+					<svg width="8.97" height="16">
+						<use xlink:href='#bracket'/>
+					</svg>
+				</div>
+			</div>		
+		</section>
+		<section class="about" id="about">
+			<div class="biography">
+				<h2 class="biography__title title">О нас</h2>
+				<div class="biography__img-wrapper">
+					<picture>
+						<source media="(min-width: 1366px)" srcset="img/confectioner-desktop@1x.jpg 1x, img/confectioner-desktop@2x.jpg 2x">
+						<source media="(min-width: 768px)" srcset="img/confectioner-tablet@1x.jpg 1x, img/confectioner-tablet@2x.jpg 2x">
+						<img src="img/confectioner-mobile@1x.jpg" srcset="img/confectioner-mobile@2x.jpg 2x" alt="Кондитер-Павел" title="Кондитер-Павел" class="biography__img">
+					</picture>
+				</div>
+				<div class="social__list biography__social-networking">
+					<div class="social__item">
+						<a href="#" class="social__link">
+							<svg class="social__icon social__icon--instagram" width="18" height="18">
+			  					<use xlink:href='#instagram'/>
+							</svg>
+						</a>
+					</div>
+					<div class="social__item">
+						<a href="#" class="social__link">
+							<svg class="social__icon social__icon--vkontakte" width="22" height="18">
+			  					<use xlink:href='#vkontakte'/>
+							</svg>
+						</a>
+					</div>
+					<div class="social__item">
+						<a href="#" class="social__link">
+							<svg class="social__icon social__icon--twitter" width="17" height="18">
+			  					<use xlink:href='#twitter'/>
+							</svg>
+						</a>
+					</div>
+				</div>
+				<div class="biography__text-wrapper">
+					<h2 class="biography__subtitle subtitle">О кондитере</h2>
+					<div class="biography__item">
+						<h3 class="biography__caption">Кондитер – как призвание</h3>
+						<p class="biography__content content">Павел — профессиональный повар в различных гастрономических областях, но однажды его сердце покорило кондитерское искусство.<br>С ранних лет он увлекался утонченным мастерством и обратился к своим талантам как кондитер. </p>
+					</div>
+					<div class="biography__item">
+						<h3 class="biography__caption">Принцип – натуральные ингредиенты</h3>
+						<p class="biography__content content">Сегодня Павел радует изделиями не только близких, но и тех, кто предпочитает качественную продукцию для торжества, а главным принципом является выбор натуральных ингредиентов. </p>
+					</div>
+				</div>
+			</div>
+			<div class="subscription">
+				<div class="subscription__quotes">”</div>
+				<p class="subscription__content">Я за простые рецепты. В Италии это называют cucina povera: когда обычные ингредиенты превращаются в божественное блюдо.</p>
+				<div class="subscription__sign-wrapper">
+					<img src="img/sign.png" alt="Роспись" width="64" height="31" class="subscription__sign">
+				</div>
+			</div>
+			<div class="advantage">
+				<h2 class="advantage__title title">Наши преимущества</h2>
+				<p class="advantage__subtitle subtitle">Почему нас выбирают?</p>
+				<ul class="advantage__list">
+					<li class="advantage__item">
+						<svg class="advantage__icon advantage__icon--ingredient" width="61" height="61">
+							<use xlink:href='#ingredient'/>
+						</svg>
+						<div class="advantage__text-wrapper">
+							<h3 class="advantage__caption">Без искусственных добавок</h3>
+							<p class="advantage__content content">Работаем с натуральными ингредиентами и свежими продуктами</p>
+						</div>
+					</li>
+					<li class="advantage__item">
+						<svg class="advantage__icon advantage__icon--cake" width="75" height="48">
+							<use xlink:href='#cake'/>
+						</svg>
+						<div class="advantage__text-wrapper">
+							<h3 class="advantage__caption">Свежий торт в день торжества</h3>
+							<p class="advantage__content content">Торты изготавливаются в течение суток до отправки</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="care">
+				<h2 class="care__title title">Забота о клиентах</h2>
+				<p class="care__subtitle subtitle">Для нас важно</p>
+				<p class="care__content content">Нам важно чтобы каждый торт был безупречным, как внутри, так и снаружи, чтобы он был создан исключительно для вас и для вашего события.
+				</p>
+			</div>
+		</section>
+		<section class="info" id="info">
+			<h2 class="title">Как заказать</h2>
+			<ol class="info__list">
+				<li class="info__item">
+					<h3 class="info__title">Срок заказа</h3>
+					<p class="info__content content">Размещать заказы желательно за 2-3 дня. На выходные заказы лучше размещать минимум за неделю. </p>
+				</li>
+				<li class="info__item">
+					<h3 class="info__title">Доставка по городу</h3>
+					<p class="info__content content">Доставка в пределах города 200 рубей, при заказе на сумму более 2000 доставка бесплатно.</p>
+				</li>
+				<li class="info__item">
+					<h3 class="info__title">Доставка за городом</h3>
+					<p class="info__content content">Доставка за пределами города рассчитывается индивидуально.</p>
+				</li>
+			</ol>
+		</section>
+		<section class="contacts" id="contacts">
+			<div class="contacts__flex-block">
+				<h2 class="contacts__title title">Контакты</h2>
+				<h3 class="contacts__subtitle subtitle">Остались вопросы?</h3>
+				<p class="contacts__inscription">Заполните форму ниже и наш кондитер свяжется с Вами</p>
+				<form action="#" method="get" class="contacts__form">
+					<input type="text" name="contacts__name" class="contacts__field" placeholder="Ваше имя" required>
+					<input type="email" name="contacts__email" class="contacts__field" placeholder="Email адрес" required>
+					<textarea name="contacts__question" class="contacts__textarea" placeholder="Ваш вопрос" required></textarea>
+					<button class="contacts__btn btn" type="submit" value="send">Отправить</button>
+				</form>
+			</div>
+			<div class="contacts__flex-block contacts__flex-block--position">
+				<p class="contacts__text">Или позвоните по телефону: <a class="contacts__text-link" href="tel:+79068999296">+7 906 899 92 96</a></p>
+				<p class="contacts__text">Наша почта : <a class="contacts__text-link" href="mailto:bakerybypavel@mail.ru">bakerybypavel@mail.ru</a></p>
+				<p class="contacts__text">Мы в соц. сетях:</p>
+				<div class="social__list">
+					<div class="social__item social__item--big">
+						<a href="#" class="social__link">
+							<svg class="social__icon social__icon--instagram social__icon--instagram-big" width="32" height="32">
+			  					<use xlink:href='#instagram'/>
+							</svg>
+						</a>
+					</div>
+					<div class="social__item social__item--big">
+						<a href="#" class="social__link">
+							<svg class="social__icon social__icon--vkontakte social__icon--vkontakte-big" width="36" height="32">
+			  					<use xlink:href='#vkontakte'/>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer class="page-footer">
+		<a href="index.html" class="page-footer__logo">Cakes</a>
+		<nav class="second-nav nav">
+			<ul class="second-nav__list">
+				<li class="second-nav__item">
+					<a href="#variety" class="second-nav__link">Наши торты</a>
+				</li>
+				<li class="second-nav__item">
+					<a href="#collect" class="second-nav__link">Индивидуальный заказ</a>
+				</li>
+				<li class="second-nav__item">
+					<a href="#reviews" class="second-nav__link">Отзывы</a>
+				</li>
+				<li class="second-nav__item">
+					<a href="#about" class="second-nav__link">О нас</a>
+				</li>
+				<li class="second-nav__item">
+					<a href="#info" class="second-nav__link">Как заказать</a>
+				</li>
+				<li class="second-nav__item">
+					<a href="#contacts" class="second-nav__link">Контакты</a>
+				</li>
+				<li class="second-nav__item second-nav__item--hidden">
+					<a href="tel:+79068999296" class="second-nav__link">+7 906 899 92 96</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="page-footer__bottom-block">
+			<div class="social__list">
+				<a href="#">
+					<svg class="social__icon page-footer__icon page-footer__icon-instagram" width="23" height="23">
+						<use xlink:href='#instagram'/>
+					</svg>
+				</a>
+				<a href="#">
+					<svg class="social__icon page-footer__icon page-footer__icon-vkontakte" width="27" height="23">
+						<use xlink:href='#vkontakte'/>
+					</svg>
+				</a>
+			</div>
+			<div class="page-footer__copyright">
+				<span>&copy; 2018 Cakes</span>
+			</div>
+		</div>
+	</footer>
+	<script src="js/script-min.js"></script>
+</body>
+</html>
