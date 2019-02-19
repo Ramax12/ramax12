@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="0 0 375 2000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="375px" height="2000px">
+    <rect x="10" y="0" width="1" height="2000" fill="#000"/>
+    <rect x="25" y="0" width="1" height="2000" fill="#000"/>
+    <!-- <rect x="30" y="0" width="1" height="2000" fill="#000"/> -->
+    <rect x="1ы75" y="0" width="1" height="2000" fill="#000"/>
+    <rect x="200" y="0" width="1" height="2000" fill="#000"/>
+    <rect x="350" y="0" width="1" height="2000" fill="#000"/>
+    <rect x="365" y="0" width="1" height="2000" fill="#000"/>
+</svg>
